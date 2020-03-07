@@ -7,33 +7,19 @@ For iOS, it use GoogleMobileVision under MLKit library
 
 Please feel free to improve my source code.
 
-# Pending to fix
-1. CameraView is not shown in Android 10 device
+## Current Version
+4.2.2.3
 
-# Update on 4.2.2
-1. Added Scan from image feature
+## Release notes
+https://github.com/JimmyPun610/BarcodeScanner.XF/tree/master/ReleaseNotes
 
-# Update on 4.2.1.5
-1. Added ask permission methods
-2. Added IsTorchOn methods
-3. Added DefaultTorchOn property
-4. Moved some code on iOS to UIThread
-5. Added VibrationOnDetected property
-6. Run OnDetected event on UIThread
-7. Added 1 second interval on iOS scanning to solve double scanning problem
-8. Allow continuous scanning
-9. Auto switch off flashlight when page dispose
-10. Catch exception on Android that some devices cannot start cameraSource even permission granted.
-11. Added AutoStartScanning property
-12. Fixed typo on VibrationOnDetected
-
-# Installation
+## Installation
 1. Install Nuget package to Forms, Android and iOS project
 ```
 Install-Package BarcodeScanner.XF
 ```
 
-# Android setup
+## Android setup
 1. Manifest.xml
 ```xml
 <uses-permission android:name="android.permission.VIBRATE" />
@@ -46,7 +32,6 @@ Install-Package BarcodeScanner.XF
   base.OnCreate(savedInstanceState);
 ...
   GoogleVisionBarCodeScanner.Droid.RendererInitializer.Init();
-  Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
 ...
   global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
   LoadApplication(new App());
@@ -55,11 +40,10 @@ Install-Package BarcodeScanner.XF
 public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
 {
     Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-    Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
     base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 }
 ```
-# iOS Setup
+## iOS Setup
 1. Edit Info.plist, add camera rights
 ```
 	<key>NSCameraUsageDescription</key>
